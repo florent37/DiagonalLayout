@@ -39,8 +39,8 @@ public class DiagonalLayout extends FrameLayout {
         paint.setColor(Color.BLUE);
 
         TypedArray styledAttributes = context.obtainStyledAttributes(attrs, R.styleable.DiagonalLayout, 0, 0);
-        angle = styledAttributes.getInt(R.styleable.DiagonalLayout_angle, 0);
-        diagonalGravity = styledAttributes.getInt(R.styleable.DiagonalLayout_diagonalGravity, LEFT);
+        angle = styledAttributes.getInt(R.styleable.DiagonalLayout_diagonal_angle, 0);
+        diagonalGravity = styledAttributes.getInt(R.styleable.DiagonalLayout_diagonal_gravity, LEFT);
 
         styledAttributes.recycle();
 

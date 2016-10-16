@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="DiagonalLayout">
-        <attr name="angle" format="integer" />
-        <attr name="diagonalGravity" format="enum">
+        <attr name="diagonal_angle" format="integer" />
+        <attr name="diagonal_gravity" format="enum">
             <enum name="left" value="0"/>
             <enum name="right" value="1"/>
         </attr>

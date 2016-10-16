@@ -8,11 +8,59 @@
 <com.github.florent37.diagonallayout.DiagonalLayout
         android:layout_width="match_parent"
         android:layout_height="250dp"
-        diagonal:angle="10"
-        diagonal:diagonalGravity="left"
+        diagonal:diagonal_angle="10"
+        diagonal:diagonal_gravity="left"
         >
 
         <!-- YOUR CONTENT -->
+
+</com.github.florent37.diagonallayout.DiagonalLayout>
+```
+
+# Sample
+
+[![screen](https://raw.githubusercontent.com/florent37/DiagonalLayout/master/media/sample2.png)](https://www.github.com/florent37/DiagonalLayout)
+
+```xml
+<com.github.florent37.diagonallayout.DiagonalLayout
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        app:diagonal_angle="20"
+        app:diagonal_gravity="right">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/mountains" />
+
+</com.github.florent37.diagonallayout.DiagonalLayout>
+```
+
+# KenBurns
+
+Using [https://github.com/flavioarfaria/KenBurnsView](https://github.com/flavioarfaria/KenBurnsView)
+
+[![screen](https://raw.githubusercontent.com/florent37/DiagonalLayout/master/media/sample.gif)](https://www.github.com/florent37/DiagonalLayout)
+
+```xml
+<com.github.florent37.diagonallayout.DiagonalLayout
+        android:id="@+id/diagonalLayout"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        diagonal:diagonal_angle="10"
+        diagonal:diagonal_gravity="left"
+        android:elevation="30dp"
+        >
+
+        <com.flaviofaria.kenburnsview.KenBurnsView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/background"
+            />
+
+        ...
 
 </com.github.florent37.diagonallayout.DiagonalLayout>
 ```
