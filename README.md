@@ -65,6 +65,14 @@ Using [https://github.com/flavioarfaria/KenBurnsView](https://github.com/flavioa
 </com.github.florent37.diagonallayout.DiagonalLayout>
 ```
 
+#Inspirations
+
+Exploration of some new styles and approaches on material design. This one here is a user profile for Hollywood personas
+
+[https://material.uplabs.com/posts/user-profile-concept](https://material.uplabs.com/posts/user-profile-concept)
+
+[![screen](https://raw.githubusercontent.com/florent37/DiagonalLayout/master/media/materialup.png)](https://material.uplabs.com/posts/user-profile-concept)
+
 #Download
 
 In your module [![Download](https://api.bintray.com/packages/florent37/maven/DiagonalLayout/images/download.svg)](https://bintray.com/florent37/maven/DiagonalLayout/_latestVersion)
