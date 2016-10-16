@@ -1,5 +1,7 @@
 # DiagonalLayout
 
+With Diagonal Layout explore new styles and approaches on material design
+
 [![screen](https://raw.githubusercontent.com/florent37/DiagonalLayout/master/media/sample.gif)](https://www.github.com/florent37/DiagonalLayout)
 
 # Usage
