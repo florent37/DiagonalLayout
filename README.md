@@ -2,7 +2,7 @@
 
 With Diagonal Layout explore new styles and approaches on material design
 
-[![screen](https://raw.githubusercontent.com/florent37/DiagonalLayout/master/media/sample.gif)](https://www.github.com/florent37/DiagonalLayout)
+[![screen](https://raw.githubusercontent.com/florent37/DiagonalLayout/master/media/with_elevation.gif)](https://www.github.com/florent37/DiagonalLayout)
 
 # Usage
 
@@ -12,6 +12,7 @@ With Diagonal Layout explore new styles and approaches on material design
         android:layout_height="250dp"
         diagonal:diagonal_angle="10"
         diagonal:diagonal_gravity="left"
+        android:elevation="10dp"
         >
 
         <!-- YOUR CONTENT -->
@@ -42,8 +43,9 @@ With Diagonal Layout explore new styles and approaches on material design
 # KenBurns
 
 Using [https://github.com/flavioarfaria/KenBurnsView](https://github.com/flavioarfaria/KenBurnsView)
+**And adding elevation with** `android:elevation="30dp"`
 
-[![screen](https://raw.githubusercontent.com/florent37/DiagonalLayout/master/media/sample.gif)](https://www.github.com/florent37/DiagonalLayout)
+[![screen](https://raw.githubusercontent.com/florent37/DiagonalLayout/master/media/with_elevation.gif)](https://www.github.com/florent37/DiagonalLayout)
 
 ```xml
 <com.github.florent37.diagonallayout.DiagonalLayout
