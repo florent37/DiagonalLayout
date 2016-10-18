@@ -28,6 +28,7 @@ With Diagonal Layout explore new styles and approaches on material design
 <com.github.florent37.diagonallayout.DiagonalLayout
         android:layout_width="match_parent"
         android:layout_height="250dp"
+        android:elevation="10dp"
         app:diagonal_angle="20"
         app:diagonal_gravity="right">
 
@@ -42,7 +43,7 @@ With Diagonal Layout explore new styles and approaches on material design
 
 # Elevation
 
-**Do not forget to add elevation with** `android:elevation="30dp"`
+**Do not forget to add elevation with** `android:elevation="**dp"`
 
 [![screen](https://raw.githubusercontent.com/florent37/DiagonalLayout/master/media/with_elevation_small.png)](https://www.github.com/florent37/DiagonalLayout)
 
