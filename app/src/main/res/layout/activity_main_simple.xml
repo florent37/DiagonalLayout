@@ -14,6 +14,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
+        android:elevation="10dp"
         app:diagonal_angle="20"
         app:diagonal_gravity="right">
 
@@ -29,6 +30,8 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:titleTextColor="@android:color/white" />
+        app:titleTextColor="@android:color/white"
+        android:elevation="11dp"
+        app:title="DiagonalLayout"/>
 
 </RelativeLayout>
