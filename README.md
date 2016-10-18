@@ -22,7 +22,7 @@ With Diagonal Layout explore new styles and approaches on material design
 
 # Sample
 
-[![screen](https://raw.githubusercontent.com/florent37/DiagonalLayout/master/media/sample2.png)](https://www.github.com/florent37/DiagonalLayout)
+[![screen](https://raw.githubusercontent.com/florent37/DiagonalLayout/master/media/sample2_elevation.png)](https://www.github.com/florent37/DiagonalLayout)
 
 ```xml
 <com.github.florent37.diagonallayout.DiagonalLayout
