@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:diagonal="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#EEEEEE"
+    android:orientation="vertical"
     >
 
     <com.github.florent37.diagonallayout.DiagonalLayout
@@ -13,11 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="250dp"
         diagonal:diagonal_angle="10"
-        android:elevation="10dp"
         diagonal:diagonal_gravity="left"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
+        diagonal:diagonal_handleMargins="true"
         >
 
         <com.flaviofaria.kenburnsview.KenBurnsView
@@ -73,22 +70,13 @@
 
     </com.github.florent37.diagonallayout.DiagonalLayout>
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/avatar"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="190dp"
-        android:elevation="15dp"
-        android:background="@drawable/circle"
-        android:src="@drawable/hughjackman"/>
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="50dp"
         android:weightSum="4"
-        android:layout_marginTop="230dp"
         >
 
         <View
@@ -115,7 +103,9 @@
                 android:textColor="#3E3E3E"
                 android:fontFamily="sans-serif-condensed"
                 android:layout_marginLeft="10dp"
-                android:textSize="14sp"/>
+                android:textSize="14sp"
+                android:id="@+id/textView"
+                />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -163,7 +153,6 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="320dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:textColor="#717171"
@@ -177,4 +166,4 @@
         android:layout_height="wrap_content"
         />
 
-</RelativeLayout>
+</LinearLayout>

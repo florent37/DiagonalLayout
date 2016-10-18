@@ -2,6 +2,7 @@
 <resources>
     <declare-styleable name="DiagonalLayout">
         <attr name="diagonal_angle" format="integer" />
+        <attr name="diagonal_handleMargins" format="boolean"/>
         <attr name="diagonal_gravity" format="enum">
             <enum name="left" value="0"/>
             <enum name="right" value="1"/>
