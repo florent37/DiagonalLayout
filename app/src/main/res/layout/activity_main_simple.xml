@@ -13,10 +13,10 @@
         android:layout_height="250dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
         android:elevation="10dp"
         app:diagonal_angle="15"
-        app:diagonal_gravity="left|top"
+        app:diagonal_gravity="right|top"
         >
 
         <ImageView

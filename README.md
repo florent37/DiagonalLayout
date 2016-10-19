@@ -41,6 +41,25 @@ With Diagonal Layout explore new styles and approaches on material design
 </com.github.florent37.diagonallayout.DiagonalLayout>
 ```
 
+[![screen](https://raw.githubusercontent.com/florent37/DiagonalLayout/master/media/sample2_bottom.png)](https://www.github.com/florent37/DiagonalLayout)
+
+```xml
+<com.github.florent37.diagonallayout.DiagonalLayout
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:elevation="10dp"
+        app:diagonal_angle="20"
+        app:diagonal_gravity="bottom|right">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/mountains" />
+
+</com.github.florent37.diagonallayout.DiagonalLayout>
+```
+
 # Elevation
 
 **Do not forget to add elevation with** `android:elevation="**dp"`
