@@ -5,17 +5,23 @@ import android.content.res.TypedArray;
 import android.util.AttributeSet;
 
 public class DiagonalLayoutSettings {
-    public static int LEFT = 0;
-    public static int RIGHT = 1;
+    public final static int LEFT = 1;
+    public final static int RIGHT = 2;
+    public final static int BOTTOM = 4;
+    public final static int TOP = 8;
     private float angle = 15;
     private boolean handleMargins;
-    private int diagonalGravity;
+    private boolean isRight = false;
+    private boolean isTop = false;
     private float elevation;
 
     DiagonalLayoutSettings(Context context, AttributeSet attrs) {
         TypedArray styledAttributes = context.obtainStyledAttributes(attrs, R.styleable.DiagonalLayout, 0, 0);
         angle = styledAttributes.getInt(R.styleable.DiagonalLayout_diagonal_angle, 0);
-        diagonalGravity = styledAttributes.getInt(R.styleable.DiagonalLayout_diagonal_gravity, LEFT);
+
+        int gravity = styledAttributes.getInt(R.styleable.DiagonalLayout_diagonal_gravity, 0);
+        isRight = (gravity & RIGHT) == RIGHT;
+        isTop = (gravity & TOP) == TOP;
         handleMargins = styledAttributes.getBoolean(R.styleable.DiagonalLayout_diagonal_handleMargins, false);
 
         styledAttributes.recycle();
@@ -30,7 +36,7 @@ public class DiagonalLayoutSettings {
     }
 
     public boolean isGravityLeft() {
-        return LEFT == diagonalGravity;
+        return !isRight;
     }
 
     public float getAngle() {
@@ -49,11 +55,7 @@ public class DiagonalLayoutSettings {
         this.handleMargins = handleMargins;
     }
 
-    public int getDiagonalGravity() {
-        return diagonalGravity;
-    }
-
-    public void setDiagonalGravity(int diagonalGravity) {
-        this.diagonalGravity = diagonalGravity;
+    public boolean isBottom(){
+        return !isTop;
     }
 }

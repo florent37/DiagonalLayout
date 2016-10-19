@@ -11,7 +11,7 @@ With Diagonal Layout explore new styles and approaches on material design
         android:layout_width="match_parent"
         android:layout_height="250dp"
         diagonal:diagonal_angle="10"
-        diagonal:diagonal_gravity="left"
+        diagonal:diagonal_gravity="left|right|top|bottom"
         android:elevation="10dp"
         >
 
@@ -89,6 +89,18 @@ In your module [![Download](https://api.bintray.com/packages/florent37/maven/Dia
 ```groovy
 compile 'com.github.florent37:diagonallayout:1.0.1  '
 ```
+
+#Logs
+
+##1.0.1
+
+- Added Elevation
+
+##1.0.2
+
+- Can setup the diagonal on *top* or *bottom*
+- Fixed angle calculation
+- Added flag attributes `top|bottom|left|right`
 
 #Credits
 

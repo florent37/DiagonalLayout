@@ -5,7 +5,6 @@ import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewParent;
 import android.widget.FrameLayout;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +25,6 @@ public class DiagonalLayout extends FrameLayout {
     }
 
     public void init(Context context, AttributeSet attrs) {
-        setClipChildren(false);
         settings = new DiagonalLayoutSettings(context, attrs);
         settings.setElevation(ViewCompat.getElevation(this));
     }
@@ -42,17 +40,6 @@ public class DiagonalLayout extends FrameLayout {
         for(View view : subViews) {
             content.addView(view);
         }
-
-        postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                final ViewParent parent = getParent();
-                if(parent != null && parent instanceof ViewGroup){
-                    ViewGroup viewGroupParents = (ViewGroup)parent;
-                    viewGroupParents.setClipChildren(false);
-                }
-            }
-        }, 100);
     }
 
     private List<View> getAndRemoveSubViews(){
@@ -64,13 +51,4 @@ public class DiagonalLayout extends FrameLayout {
         return subViews;
     }
 
-    public void setAngle(float angle) {
-        settings.setAngle(angle);
-        invalidate();
-    }
-
-    public void setDiagonalGravity(int gravity) {
-        settings.setDiagonalGravity(gravity);
-        invalidate();
-    }
 }

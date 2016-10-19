@@ -21,7 +21,7 @@ public class DiagonalLayoutContent extends FrameLayout {
     Path path;
     Paint paint;
 
-    Integer defaultMarginBottom;
+    Integer defaultMargin_forPosition;
 
     public DiagonalLayoutContent(Context context) {
         super(context);
@@ -51,16 +51,62 @@ public class DiagonalLayoutContent extends FrameLayout {
         calculateLayout();
     }
 
-    private void calculateLayout(){
-        if(settings == null){
+    private void calculateLayout() {
+        if (settings == null) {
             return;
         }
         height = getMeasuredHeight();
         width = getMeasuredWidth();
-        if(width > 0 && height > 0) {
+        if (width > 0 && height > 0) {
 
-            float perpendicularHeight = (float) (width * Math.tan(Math.toRadians(settings.getAngle())));
+            final float perpendicularHeight = (float) (width * Math.tan(Math.toRadians(settings.getAngle())));
 
+            createPath(perpendicularHeight);
+
+            handleMargins(perpendicularHeight);
+
+            handleElevation(perpendicularHeight);
+        }
+    }
+
+    private void handleElevation(float perpendicularHeight) {
+        float elevation = settings.getElevation();
+        if (elevation > 0) {
+            final ViewGroup parent = (ViewGroup) getParent();
+            View back = new View(getContext());
+            back.setBackgroundColor(Color.WHITE);
+            double w = (Math.sqrt(Math.pow(width, 2) + Math.pow(perpendicularHeight, 2)));
+            MarginLayoutParams marginLayoutParams = new MarginLayoutParams((int) Math.floor(w), height);
+            ViewCompat.setElevation(back, elevation);
+            ViewCompat.setElevation(this, elevation + 1);
+            if (settings.isBottom()) {
+                if (settings.isGravityLeft()) {
+                    back.setRotation(-settings.getAngle());
+                    back.setPivotX(0);
+                    back.setPivotY(height);
+                } else {
+                    back.setRotation(settings.getAngle());
+                    back.setPivotX(width);
+                    back.setPivotY(height);
+                }
+            } else {
+                if (settings.isGravityLeft()) {
+                    back.setRotation(settings.getAngle());
+                    back.setPivotX(0);
+                    back.setPivotY(0);
+                } else {
+                    back.setRotation(-settings.getAngle());
+                    back.setPivotX(width);
+                    back.setPivotY(0);
+                }
+            }
+
+            parent.addView(back, marginLayoutParams);
+        }
+    }
+
+    private void createPath(float perpendicularHeight) {
+        if (settings.isBottom()) {
             if (settings.isGravityLeft()) {
                 path.moveTo(0, 0);
                 path.lineTo(width, 0);
@@ -74,41 +120,45 @@ public class DiagonalLayoutContent extends FrameLayout {
                 path.lineTo(0, height - perpendicularHeight);
                 path.lineTo(0, 0);
             }
-
-            if(settings.isHandleMargins()){
-                ViewGroup.LayoutParams layoutParams = getLayoutParams();
-                if(layoutParams instanceof MarginLayoutParams){
-                    MarginLayoutParams lp = (MarginLayoutParams)layoutParams;
-                    if(defaultMarginBottom == null){
-                        defaultMarginBottom = lp.bottomMargin;
-                    } else {
-                        defaultMarginBottom = 0;
-                    }
-                    lp.bottomMargin = (int) (defaultMarginBottom - perpendicularHeight);
-                    setLayoutParams(lp);
-                }
+        } else {
+            if (settings.isGravityLeft()) {
+                path.moveTo(width, height);
+                path.lineTo(width, perpendicularHeight);
+                path.lineTo(0, 0);
+                path.lineTo(0, height);
+                path.lineTo(width, height);
+            } else {
+                path.moveTo(width, height);
+                path.lineTo(width, 0);
+                path.lineTo(0, perpendicularHeight);
+                path.lineTo(0, height);
+                path.lineTo(width, height);
             }
+        }
+    }
 
-            float elevation = settings.getElevation();
-            if(elevation > 0) {
-                final ViewGroup parent = (ViewGroup) getParent();
-                View back = new View(getContext());
-                back.setBackgroundColor(Color.WHITE);
-                double w = (Math.sqrt(Math.pow(width, 2) + Math.pow(perpendicularHeight, 2)));
-                MarginLayoutParams marginLayoutParams = new MarginLayoutParams((int) Math.floor(w), height);
-                ViewCompat.setElevation(back, elevation);
-                ViewCompat.setElevation(this, elevation+1);
-                if (settings.isGravityLeft()) {
-                    back.setRotation(-settings.getAngle());
-                    back.setPivotX(0);
-                    back.setPivotY(height);
+    private void handleMargins(float perpendicularHeight) {
+        if (settings.isHandleMargins()) {
+            ViewGroup.LayoutParams layoutParams = getLayoutParams();
+            if (layoutParams instanceof MarginLayoutParams) {
+                MarginLayoutParams lp = (MarginLayoutParams) layoutParams;
+
+                if (settings.isBottom()) {
+                    if (defaultMargin_forPosition == null) {
+                        defaultMargin_forPosition = lp.bottomMargin;
+                    } else {
+                        defaultMargin_forPosition = 0;
+                    }
+                    lp.bottomMargin = (int) (defaultMargin_forPosition - perpendicularHeight);
                 } else {
-                    back.setRotation(settings.getAngle());
-                    back.setPivotX(width);
-                    back.setPivotY(height);
+                    if (defaultMargin_forPosition == null) {
+                        defaultMargin_forPosition = lp.topMargin;
+                    } else {
+                        defaultMargin_forPosition = 0;
+                    }
+                    lp.topMargin = (int) (defaultMargin_forPosition - perpendicularHeight);
                 }
-
-                parent.addView(back, marginLayoutParams);
+                setLayoutParams(lp);
             }
         }
     }
@@ -116,7 +166,7 @@ public class DiagonalLayoutContent extends FrameLayout {
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
         super.onLayout(changed, left, top, right, bottom);
-        if(changed){
+        if (changed) {
             calculateLayout();
         }
     }

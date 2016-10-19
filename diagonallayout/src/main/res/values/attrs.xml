@@ -3,9 +3,11 @@
     <declare-styleable name="DiagonalLayout">
         <attr name="diagonal_angle" format="integer" />
         <attr name="diagonal_handleMargins" format="boolean"/>
-        <attr name="diagonal_gravity" format="enum">
-            <enum name="left" value="0"/>
-            <enum name="right" value="1"/>
+        <attr name="diagonal_gravity">
+            <flag name="left" value="1" />
+            <flag name="right" value="2" />
+            <flag name="bottom" value="4" />
+            <flag name="top" value="8"/>
         </attr>
     </declare-styleable>
 </resources>
