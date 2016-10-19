@@ -22,6 +22,8 @@ With Diagonal Layout explore new styles and approaches on material design
 
 # Sample
 
+## Bottom
+
 [![screen](https://raw.githubusercontent.com/florent37/DiagonalLayout/master/media/sample2_elevation.png)](https://www.github.com/florent37/DiagonalLayout)
 
 ```xml
@@ -30,7 +32,7 @@ With Diagonal Layout explore new styles and approaches on material design
         android:layout_height="250dp"
         android:elevation="10dp"
         app:diagonal_angle="20"
-        app:diagonal_gravity="right">
+        app:diagonal_gravity="right|bottom">
 
         <ImageView
             android:layout_width="match_parent"
@@ -41,6 +43,8 @@ With Diagonal Layout explore new styles and approaches on material design
 </com.github.florent37.diagonallayout.DiagonalLayout>
 ```
 
+## Top
+
 [![screen](https://raw.githubusercontent.com/florent37/DiagonalLayout/master/media/sample2_bottom.png)](https://www.github.com/florent37/DiagonalLayout)
 
 ```xml
@@ -49,7 +53,7 @@ With Diagonal Layout explore new styles and approaches on material design
         android:layout_height="250dp"
         android:elevation="10dp"
         app:diagonal_angle="20"
-        app:diagonal_gravity="bottom|right">
+        app:diagonal_gravity="right|top">
 
         <ImageView
             android:layout_width="match_parent"
