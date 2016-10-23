@@ -1,5 +1,7 @@
 # DiagonalLayout
 
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-DiagonalLayout-brightgreen.svg?style=flat)](http://android-arsenal.com/details/1/4530)
+
 With Diagonal Layout explore new styles and approaches on material design
 
 [![screen](https://raw.githubusercontent.com/florent37/DiagonalLayout/master/media/sample.gif)](https://www.github.com/florent37/DiagonalLayout)
