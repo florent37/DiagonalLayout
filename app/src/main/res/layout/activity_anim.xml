@@ -5,49 +5,81 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#EEEEEE"
+    android:clipChildren="false"
     >
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="500dp"
-        android:background="#1dabbe"
+        android:layout_height="400dp"
+        android:background="#2ab4fc"
         >
 
-        <TextView
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="background text"
-            android:textColor="@android:color/white"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed"
+                android:text="Last Activity"
+                android:textColor="@android:color/white"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif"
+                android:text="Running 2hrs Ago"
+                android:textColor="@android:color/white"
+                />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <com.github.florent37.diagonallayout.DiagonalLayout
+        android:id="@+id/layoutBottom"
+        android:layout_width="match_parent"
+        android:layout_height="210dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:elevation="15dp"
+        diagonal:diagonal_angle="10"
+        android:visibility="gone"
+        diagonal:diagonal_gravity="left|top"
+        >
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="#f7f9fc"
             />
 
-        <com.github.florent37.diagonallayout.DiagonalLayout
-            android:id="@+id/layoutBottom"
+    </com.github.florent37.diagonallayout.DiagonalLayout>
+
+    <com.github.florent37.diagonallayout.DiagonalLayout
+        android:id="@+id/layoutTop"
+        android:layout_width="match_parent"
+        android:layout_height="210dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:elevation="10dp"
+        android:background="#333"
+        diagonal:diagonal_angle="10"
+        diagonal:diagonal_gravity="left|bottom"
+        >
+
+        <ImageView
             android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:elevation="10dp"
-            diagonal:diagonal_angle="10"
-            diagonal:diagonal_gravity="left|top"
-            >
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="#f7f9fc"
+            />
 
-        </com.github.florent37.diagonallayout.DiagonalLayout>
+    </com.github.florent37.diagonallayout.DiagonalLayout>
 
-        <com.github.florent37.diagonallayout.DiagonalLayout
-            android:id="@+id/layoutTop"
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:elevation="10dp"
-            diagonal:diagonal_angle="10"
-            diagonal:diagonal_gravity="left|bottom"
-            >
-
-        </com.github.florent37.diagonallayout.DiagonalLayout>
-
-    </RelativeLayout>
 </RelativeLayout>

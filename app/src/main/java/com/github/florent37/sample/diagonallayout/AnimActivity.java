@@ -12,7 +12,7 @@ public class AnimActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_simple);
+        setContentView(R.layout.activity_anim);
 
         layoutTop = findViewById(R.id.layoutTop);
         layoutBottom = findViewById(R.id.layoutBottom);

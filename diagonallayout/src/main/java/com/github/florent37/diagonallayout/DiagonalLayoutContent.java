@@ -74,10 +74,10 @@ public class DiagonalLayoutContent extends FrameLayout {
         if (elevation > 0) {
             final ViewGroup parent = (ViewGroup) getParent();
             View back = new View(getContext());
-            back.setBackgroundColor(Color.WHITE);
+            back.setBackgroundColor(Color.BLACK);
             double w = (Math.sqrt(Math.pow(width, 2) + Math.pow(perpendicularHeight, 2)));
             MarginLayoutParams marginLayoutParams = new MarginLayoutParams((int) Math.floor(w), height);
-            ViewCompat.setElevation(back, elevation);
+            ViewCompat.setElevation(back, elevation + 2);
             ViewCompat.setElevation(this, elevation + 1);
             if (settings.isBottom()) {
                 if (settings.isGravityLeft()) {
