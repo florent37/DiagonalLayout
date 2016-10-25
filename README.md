@@ -127,6 +127,15 @@ compile 'com.github.florent37:diagonallayout:1.0.2'
 - Fixed angle calculation
 - Added flag attributes `top|bottom|left|right`
 
+##1.0.3
+
+Thanks to [ZieIony](https://github.com/ZieIony)
+
+- Changed clipping method
+- Changed shadow casting method
+- Removed unnecessary content layout
+- added support for padding
+
 #Credits
 
 Author: Florent Champigny [http://www.florentchampigny.com/](http://www.florentchampigny.com/)
