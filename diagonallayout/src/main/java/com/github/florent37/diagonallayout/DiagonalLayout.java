@@ -81,7 +81,7 @@ public class DiagonalLayout extends FrameLayout {
     private Path createClipPath(float perpendicularHeight) {
         Path path = new Path();
         if (settings.isBottom()) {
-            if (settings.isGravityLeft()) {
+            if (settings.isDirectionLeft()) {
                 path.moveTo(width - getPaddingRight() + EPSILON, height - perpendicularHeight - getPaddingBottom() + EPSILON);
                 path.lineTo(width - getPaddingRight() + EPSILON, height - getPaddingBottom() + EPSILON);
                 path.lineTo(getPaddingLeft() - EPSILON, height - getPaddingBottom() + EPSILON);
@@ -92,8 +92,8 @@ public class DiagonalLayout extends FrameLayout {
                 path.lineTo(getPaddingLeft() - EPSILON, height - perpendicularHeight - getPaddingBottom() + EPSILON);
                 path.close();
             }
-        } else {
-            if (settings.isGravityLeft()) {
+        } else if(settings.isTop()){
+            if (settings.isDirectionLeft()) {
                 path.moveTo(width - getPaddingRight() + EPSILON, getPaddingTop() + perpendicularHeight - EPSILON);
                 path.lineTo(getPaddingLeft() - EPSILON, getPaddingTop() - EPSILON);
                 path.lineTo(width - getPaddingRight() + EPSILON, getPaddingTop() - EPSILON);
@@ -104,6 +104,30 @@ public class DiagonalLayout extends FrameLayout {
                 path.lineTo(getPaddingLeft() - EPSILON, getPaddingTop() - EPSILON);
                 path.close();
             }
+        } else if(settings.isRight()){
+            if (settings.isDirectionLeft()) {
+                path.moveTo(width - getPaddingRight() + EPSILON, getPaddingTop() - EPSILON);
+                path.lineTo(width - getPaddingRight() + EPSILON, height - getPaddingBottom() + EPSILON);
+                path.lineTo(width - perpendicularHeight - getPaddingRight() + EPSILON, height - getPaddingBottom() + EPSILON);
+                path.close();
+            } else {
+                path.moveTo(width - perpendicularHeight - getPaddingRight() - EPSILON, getPaddingTop() - EPSILON);
+                path.lineTo(width - getPaddingRight() + EPSILON, getPaddingTop() - EPSILON);
+                path.lineTo(width - getPaddingRight() + EPSILON, height - getPaddingBottom() + EPSILON);
+                path.close();
+            }
+        } else if(settings.isLeft()){
+            if (settings.isDirectionLeft()) {
+                path.moveTo(getPaddingLeft() - EPSILON, getPaddingTop() - EPSILON);
+                path.lineTo(getPaddingLeft() + perpendicularHeight + EPSILON, getPaddingTop() - EPSILON);
+                path.lineTo(getPaddingLeft() - EPSILON, height - getPaddingBottom() + EPSILON);
+                path.close();
+            } else {
+                path.moveTo(getPaddingLeft() - EPSILON, getPaddingTop() - EPSILON);
+                path.lineTo(getPaddingLeft() + perpendicularHeight + EPSILON, height - getPaddingBottom() + EPSILON);
+                path.lineTo(getPaddingLeft() - EPSILON, height - getPaddingBottom() + EPSILON);
+                path.close();
+            }
         }
         return path;
     }
@@ -111,7 +135,7 @@ public class DiagonalLayout extends FrameLayout {
     private Path createOutlinePath(float perpendicularHeight) {
         Path path = new Path();
         if (settings.isBottom()) {
-            if (settings.isGravityLeft()) {
+            if (settings.isDirectionLeft()) {
                 path.moveTo(getPaddingLeft(), getPaddingRight());
                 path.lineTo(width - getPaddingRight(), getPaddingTop());
                 path.lineTo(width - getPaddingRight(), height - perpendicularHeight - getPaddingBottom());
@@ -124,8 +148,8 @@ public class DiagonalLayout extends FrameLayout {
                 path.lineTo(width - getPaddingRight(), getPaddingTop());
                 path.close();
             }
-        } else {
-            if (settings.isGravityLeft()) {
+        } else if(settings.isTop()){
+            if (settings.isDirectionLeft()) {
                 path.moveTo(width - getPaddingRight(), height - getPaddingBottom());
                 path.lineTo(width - getPaddingRight(), getPaddingTop() + perpendicularHeight);
                 path.lineTo(getPaddingLeft(), getPaddingTop());
@@ -166,7 +190,7 @@ public class DiagonalLayout extends FrameLayout {
                         defaultMargin_forPosition = 0;
                     }
                     lp.bottomMargin = (int) (defaultMargin_forPosition - perpendicularHeight);
-                } else {
+                } else if(settings.isTop()) {
                     if (defaultMargin_forPosition == null) {
                         defaultMargin_forPosition = lp.topMargin;
                     } else {

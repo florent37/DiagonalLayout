@@ -13,7 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="250dp"
         diagonal:diagonal_angle="10"
-        diagonal:diagonal_gravity="left|bottom"
+        diagonal:diagonal_position="bottom"
+        diagonal:diagonal_direction="left"
         diagonal:diagonal_handleMargins="true"
         >
 

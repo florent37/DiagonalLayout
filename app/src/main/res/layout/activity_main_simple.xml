@@ -16,7 +16,8 @@
         android:layout_alignParentBottom="true"
         android:elevation="10dp"
         app:diagonal_angle="15"
-        app:diagonal_gravity="right|top"
+        app:diagonal_position="top"
+        app:diagonal_direction="right"
         >
 
         <ImageView

@@ -13,7 +13,8 @@ With Diagonal Layout explore new styles and approaches on material design
         android:layout_width="match_parent"
         android:layout_height="250dp"
         diagonal:diagonal_angle="10"
-        diagonal:diagonal_gravity="left|right|top|bottom"
+        diagonal:diagonal_position="left|right|top|bottom"
+        diagonal:diagonal_direction="left|right"
         android:elevation="10dp"
         >
 
@@ -34,7 +35,7 @@ With Diagonal Layout explore new styles and approaches on material design
         android:layout_height="250dp"
         android:elevation="10dp"
         app:diagonal_angle="20"
-        app:diagonal_gravity="right|bottom">
+        app:diagonal_position="right|bottom">
 
         <ImageView
             android:layout_width="match_parent"
@@ -55,7 +56,7 @@ With Diagonal Layout explore new styles and approaches on material design
         android:layout_height="250dp"
         android:elevation="10dp"
         app:diagonal_angle="20"
-        app:diagonal_gravity="right|top">
+        app:diagonal_position="right|top">
 
         <ImageView
             android:layout_width="match_parent"
@@ -84,7 +85,7 @@ Using [https://github.com/flavioarfaria/KenBurnsView](https://github.com/flavioa
         android:layout_width="match_parent"
         android:layout_height="250dp"
         diagonal:diagonal_angle="10"
-        diagonal:diagonal_gravity="left"
+        diagonal:diagonal_position="left"
         android:elevation="30dp"
         >
 

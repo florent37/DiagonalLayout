@@ -9,20 +9,24 @@ public class DiagonalLayoutSettings {
     public final static int RIGHT = 2;
     public final static int BOTTOM = 4;
     public final static int TOP = 8;
+
+    public final static int DIRECTION_LEFT = 1;
+    public final static int DIRECTION_RIGHT = 2;
+
     private float angle = 15;
     private boolean handleMargins;
-    private boolean isRight = false;
-    private boolean isTop = false;
+    private int gravity = BOTTOM;
+    private boolean isDirectionLeft;
     private float elevation;
 
     DiagonalLayoutSettings(Context context, AttributeSet attrs) {
         TypedArray styledAttributes = context.obtainStyledAttributes(attrs, R.styleable.DiagonalLayout, 0, 0);
         angle = styledAttributes.getInt(R.styleable.DiagonalLayout_diagonal_angle, 0);
 
-        int gravity = styledAttributes.getInt(R.styleable.DiagonalLayout_diagonal_gravity, 0);
-        isRight = (gravity & RIGHT) == RIGHT;
-        isTop = (gravity & TOP) == TOP;
+        gravity = styledAttributes.getInt(R.styleable.DiagonalLayout_diagonal_position, BOTTOM);
         handleMargins = styledAttributes.getBoolean(R.styleable.DiagonalLayout_diagonal_handleMargins, false);
+
+        isDirectionLeft = styledAttributes.getInt(R.styleable.DiagonalLayout_diagonal_direction, DIRECTION_LEFT) == DIRECTION_LEFT;
 
         styledAttributes.recycle();
     }
@@ -33,10 +37,6 @@ public class DiagonalLayoutSettings {
 
     public void setElevation(float elevation) {
         this.elevation = elevation;
-    }
-
-    public boolean isGravityLeft() {
-        return !isRight;
     }
 
     public float getAngle() {
@@ -56,6 +56,17 @@ public class DiagonalLayoutSettings {
     }
 
     public boolean isBottom(){
-        return !isTop;
+        return gravity == BOTTOM;
+    }
+    public boolean isTop(){ return gravity == TOP; }
+    public boolean isLeft(){
+        return gravity == LEFT;
+    }
+    public boolean isRight(){
+        return gravity == RIGHT;
+    }
+
+    public boolean isDirectionLeft() {
+        return isDirectionLeft;
     }
 }
