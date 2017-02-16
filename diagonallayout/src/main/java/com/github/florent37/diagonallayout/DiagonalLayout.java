@@ -162,6 +162,34 @@ public class DiagonalLayout extends FrameLayout {
                 path.lineTo(getPaddingLeft(), height - getPaddingBottom());
                 path.close();
             }
+        } else if(settings.isRight()){
+            if (settings.isDirectionLeft()) {
+                path.moveTo(getPaddingLeft(), getPaddingTop());
+                path.lineTo(width - getPaddingRight(), getPaddingTop());
+                path.lineTo(width - getPaddingRight() - perpendicularHeight, height - getPaddingBottom());
+                path.lineTo(getPaddingLeft(), height - getPaddingBottom());
+                path.close();
+            } else {
+                path.moveTo(getPaddingLeft(), getPaddingTop());
+                path.lineTo(width - getPaddingRight() - perpendicularHeight, getPaddingTop());
+                path.lineTo(width - getPaddingRight(), height - getPaddingBottom());
+                path.lineTo(getPaddingLeft(), height - getPaddingBottom());
+                path.close();
+            }
+        } else if(settings.isLeft()){
+            if (settings.isDirectionLeft()) {
+                path.moveTo(getPaddingLeft() + perpendicularHeight, getPaddingTop());
+                path.lineTo(width - getPaddingRight(), getPaddingTop());
+                path.lineTo(width - getPaddingRight(), height - getPaddingBottom());
+                path.lineTo(getPaddingLeft(), height - getPaddingBottom());
+                path.close();
+            } else {
+                path.moveTo(getPaddingLeft(), getPaddingTop());
+                path.lineTo(width - getPaddingRight(), getPaddingTop());
+                path.lineTo(width - getPaddingRight(), height - getPaddingBottom());
+                path.lineTo(getPaddingLeft() + perpendicularHeight, height - getPaddingBottom());
+                path.close();
+            }
         }
         return path;
     }

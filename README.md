@@ -13,8 +13,8 @@ With Diagonal Layout explore new styles and approaches on material design
         android:layout_width="match_parent"
         android:layout_height="250dp"
         diagonal:diagonal_angle="10"
-        diagonal:diagonal_position="left|right|top|bottom"
-        diagonal:diagonal_direction="left|right"
+        diagonal:diagonal_position="left / right / top / bottom"
+        diagonal:diagonal_direction="left / right"
         android:elevation="10dp"
         >
 
@@ -35,7 +35,8 @@ With Diagonal Layout explore new styles and approaches on material design
         android:layout_height="250dp"
         android:elevation="10dp"
         app:diagonal_angle="20"
-        app:diagonal_position="right|bottom">
+        diagonal:diagonal_direction="left"
+        diagonal:diagonal_position="bottom">
 
         <ImageView
             android:layout_width="match_parent"
@@ -56,7 +57,8 @@ With Diagonal Layout explore new styles and approaches on material design
         android:layout_height="250dp"
         android:elevation="10dp"
         app:diagonal_angle="20"
-        app:diagonal_position="right|top">
+        app:diagonal_position="top"
+        app:diagonal_direction="right">
 
         <ImageView
             android:layout_width="match_parent"
@@ -66,6 +68,10 @@ With Diagonal Layout explore new styles and approaches on material design
 
 </com.github.florent37.diagonallayout.DiagonalLayout>
 ```
+
+# Position / Direction
+
+[![screen](https://raw.githubusercontent.com/florent37/DiagonalLayout/master/media/position_small.png)](https://www.github.com/florent37/DiagonalLayout)
 
 # Elevation
 
@@ -136,6 +142,11 @@ Thanks to [ZieIony](https://github.com/ZieIony)
 - Changed shadow casting method
 - Removed unnecessary content layout
 - added support for padding
+
+##1.0.4
+
+- Removed `:gravity`
+- Added `:position` & `direction`
 
 #Credits
 

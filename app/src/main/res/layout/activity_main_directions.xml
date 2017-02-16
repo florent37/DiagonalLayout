@@ -17,6 +17,7 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
             android:orientation="vertical">
 
             <LinearLayout
@@ -29,12 +30,13 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="16dp"
-                    android:text="top" />
+                    android:text="position: top" />
 
                 <com.github.florent37.diagonallayout.DiagonalLayout
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_margin="20dp"
+                    android:elevation="10dp"
                     app:diagonal_angle="15"
                     app:diagonal_direction="right"
                     app:diagonal_position="top">
@@ -58,6 +60,7 @@
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_margin="20dp"
+                    android:elevation="10dp"
                     app:diagonal_angle="15"
                     app:diagonal_direction="left"
                     app:diagonal_position="top">
@@ -82,12 +85,13 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="16dp"
-                    android:text="bottom" />
+                    android:text="position: bottom" />
 
                 <com.github.florent37.diagonallayout.DiagonalLayout
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_margin="20dp"
+                    android:elevation="10dp"
                     app:diagonal_angle="15"
                     app:diagonal_direction="right"
                     app:diagonal_position="bottom">
@@ -111,6 +115,7 @@
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_margin="20dp"
+                    android:elevation="10dp"
                     app:diagonal_angle="15"
                     app:diagonal_direction="left"
                     app:diagonal_position="bottom">
@@ -137,6 +142,7 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
             android:orientation="vertical">
 
             <TextView
@@ -144,12 +150,13 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="16dp"
-                android:text="left" />
+                android:text="position: left" />
 
             <com.github.florent37.diagonallayout.DiagonalLayout
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_margin="20dp"
+                android:elevation="10dp"
                 app:diagonal_angle="15"
                 app:diagonal_direction="right"
                 app:diagonal_position="left">
@@ -173,6 +180,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_margin="20dp"
+                android:elevation="10dp"
                 app:diagonal_angle="15"
                 app:diagonal_direction="left"
                 app:diagonal_position="left">
@@ -197,12 +205,13 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="16dp"
-                android:text="right" />
+                android:text="position: right" />
 
             <com.github.florent37.diagonallayout.DiagonalLayout
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_margin="20dp"
+                android:elevation="10dp"
                 app:diagonal_angle="15"
                 app:diagonal_direction="right"
                 app:diagonal_position="right">
@@ -226,6 +235,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_margin="20dp"
+                android:elevation="10dp"
                 app:diagonal_angle="15"
                 app:diagonal_direction="left"
                 app:diagonal_position="right">
