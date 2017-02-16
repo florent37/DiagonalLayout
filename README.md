@@ -71,7 +71,7 @@ With Diagonal Layout explore new styles and approaches on material design
 
 # Position / Direction
 
-[![screen](https://raw.githubusercontent.com/florent37/DiagonalLayout/master/media/position_small.png)](https://www.github.com/florent37/DiagonalLayout)
+[![screen](https://raw.githubusercontent.com/florent37/DiagonalLayout/master/media/positions_small.png)](https://www.github.com/florent37/DiagonalLayout)
 
 # Elevation
 
@@ -119,7 +119,7 @@ Exploration of some new styles and approaches on material design. This one here 
 
 In your module [![Download](https://api.bintray.com/packages/florent37/maven/DiagonalLayout/images/download.svg)](https://bintray.com/florent37/maven/DiagonalLayout/_latestVersion)
 ```groovy
-compile 'com.github.florent37:diagonallayout:1.0.2'
+compile 'com.github.florent37:diagonallayout:1.0.4'
 ```
 
 #Logs
