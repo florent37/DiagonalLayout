@@ -107,7 +107,7 @@ Using [https://github.com/flavioarfaria/KenBurnsView](https://github.com/flavioa
 </com.github.florent37.diagonallayout.DiagonalLayout>
 ```
 
-#Inspirations
+# Inspirations
 
 Exploration of some new styles and approaches on material design. This one here is a user profile for Hollywood personas
 
@@ -115,7 +115,7 @@ Exploration of some new styles and approaches on material design. This one here 
 
 [![screen](https://raw.githubusercontent.com/florent37/DiagonalLayout/master/media/materialup.png)](https://material.uplabs.com/posts/user-profile-concept)
 
-#Download
+# Download
 
 In your module [![Download](https://api.bintray.com/packages/florent37/maven/DiagonalLayout/images/download.svg)](https://bintray.com/florent37/maven/DiagonalLayout/_latestVersion)
 ```groovy
@@ -124,17 +124,17 @@ compile 'com.github.florent37:diagonallayout:1.0.4'
 
 #Logs
 
-##1.0.1
+## 1.0.1
 
 - Added Elevation
 
-##1.0.2
+## 1.0.2
 
 - Can setup the diagonal on *top* or *bottom*
 - Fixed angle calculation
 - Added flag attributes `top|bottom|left|right`
 
-##1.0.3
+## 1.0.3
 
 Thanks to [ZieIony](https://github.com/ZieIony)
 
@@ -143,14 +143,15 @@ Thanks to [ZieIony](https://github.com/ZieIony)
 - Removed unnecessary content layout
 - added support for padding
 
-##1.0.4
+## 1.0.4
 
 - Removed `:gravity`
 - Added `:position` & `direction`
 
-#Credits
+# Credits
 
 Author: Florent Champigny [http://www.florentchampigny.com/](http://www.florentchampigny.com/)
+Blog : [http://www.tutos-android-france.com/](http://www.www.tutos-android-france.com/)
 
 <a href="https://plus.google.com/+florentchampigny">
   <img alt="Follow me on Google+"
