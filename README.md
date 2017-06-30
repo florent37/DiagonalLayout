@@ -122,7 +122,7 @@ In your module [![Download](https://api.bintray.com/packages/florent37/maven/Dia
 compile 'com.github.florent37:diagonallayout:1.0.4'
 ```
 
-#Logs
+# Logs
 
 ## 1.0.1
 
