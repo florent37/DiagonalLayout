@@ -55,6 +55,12 @@ public class DiagonalLayout extends FrameLayout {
         pdMode = new PorterDuffXfermode(PorterDuff.Mode.CLEAR);
     }
 
+    @Override
+    public void setBackgroundColor(int color){
+        paint.setColor(color);
+        postInvalidate();
+    }
+
     private void calculateLayout() {
         if (settings == null) {
             return;
@@ -72,7 +78,7 @@ public class DiagonalLayout extends FrameLayout {
 
             ViewCompat.setElevation(this, settings.getElevation());
 
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && ViewCompat.getElevation(this) > 0f) {
                 setOutlineProvider(getOutlineProvider());
             }
         }
