@@ -74,6 +74,12 @@ public class DiagonalLayout extends FrameLayout {
         postInvalidate();
     }
 
+    public void setAngle(float angle){
+        settings.setAngle(angle);
+        calculateLayout();
+        postInvalidate();
+    }
+
     private void calculateLayout() {
         if (settings == null) {
             return;
