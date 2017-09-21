@@ -285,14 +285,18 @@ public class DiagonalLayout extends FrameLayout {
 
     @Override
     protected void dispatchDraw(Canvas canvas) {
-        int saveCount = canvas.saveLayer(0, 0, getWidth(), getHeight(), null, Canvas.ALL_SAVE_FLAG);
+        if(!isInEditMode()) {
+            int saveCount = canvas.saveLayer(0, 0, getWidth(), getHeight(), null, Canvas.ALL_SAVE_FLAG);
 
-        super.dispatchDraw(canvas);
+            super.dispatchDraw(canvas);
 
-        paint.setXfermode(pdMode);
-        canvas.drawPath(clipPath, paint);
+            paint.setXfermode(pdMode);
+            canvas.drawPath(clipPath, paint);
 
-        canvas.restoreToCount(saveCount);
-        paint.setXfermode(null);
+            canvas.restoreToCount(saveCount);
+            paint.setXfermode(null);
+        } else {
+            super.dispatchDraw(canvas);
+        }
     }
 }
