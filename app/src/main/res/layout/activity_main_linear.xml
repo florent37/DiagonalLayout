@@ -22,7 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
-            android:src="@drawable/background"
+            android:src="@drawable/diagonallayout_background"
             />
 
         <TextView
@@ -157,7 +157,7 @@
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:textColor="#717171"
-        android:text="@string/description"/>
+        android:text="@string/diagonallayout_description"/>
 
 
     <android.support.v7.widget.Toolbar

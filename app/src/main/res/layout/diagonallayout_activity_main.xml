@@ -26,7 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
-            android:src="@drawable/background"
+            android:src="@drawable/diagonallayout_background"
             />
 
         <TextView
@@ -82,8 +82,8 @@
         android:layout_marginLeft="40dp"
         android:layout_marginTop="190dp"
         android:elevation="15dp"
-        android:background="@drawable/circle"
-        android:src="@drawable/hughjackman"/>
+        android:background="@drawable/diagonallayout_circle"
+        android:src="@drawable/diagonallayout_hughjackman"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -169,7 +169,7 @@
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:textColor="#717171"
-        android:text="@string/description"/>
+        android:text="@string/diagonallayout_description"/>
 
 
     <android.support.v7.widget.Toolbar

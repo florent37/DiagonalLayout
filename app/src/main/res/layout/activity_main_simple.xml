@@ -24,7 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
-            android:src="@drawable/mountains" />
+            android:src="@drawable/diagonallayout_mountains" />
 
     </com.github.florent37.diagonallayout.DiagonalLayout>
 
