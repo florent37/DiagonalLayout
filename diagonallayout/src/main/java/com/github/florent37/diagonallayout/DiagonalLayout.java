@@ -169,7 +169,7 @@ public class DiagonalLayout extends FrameLayout {
 
     private Path createOutlinePath(float perpendicularHeight) {
         Path path = new Path();
-        switch (settings.getDirection()) {
+        switch (settings.getPosition()) {
             case DiagonalLayoutSettings.BOTTOM:
                 if (settings.isDirectionLeft()) {
                     path.moveTo(getPaddingLeft(), getPaddingRight());
