@@ -4,9 +4,10 @@
 
 With Diagonal Layout explore new styles and approaches on material design
 
-<a target='_blank' rel='nofollow' href='https://app.codesponsor.io/link/iqkQGAc2EFNdScAzpwZr1Sdy/florent37/DiagonalLayout'>
-  <img alt='Sponsor' width='888' height='68' src='https://app.codesponsor.io/embed/iqkQGAc2EFNdScAzpwZr1Sdy/florent37/DiagonalLayout.svg' />
+<a href="https://goo.gl/WXW8Dc">
+  <img alt="Android app on Google Play" src="https://developer.android.com/images/brand/en_app_rgb_wo_45.png" />
 </a>
+
 
 [![screen](https://raw.githubusercontent.com/florent37/DiagonalLayout/master/media/sample.gif)](https://www.github.com/florent37/DiagonalLayout)
 
@@ -159,9 +160,11 @@ Thanks to [ZieIony](https://github.com/ZieIony)
 Author: Florent Champigny [http://www.florentchampigny.com/](http://www.florentchampigny.com/)
 Blog : [http://www.tutos-android-france.com/](http://www.tutos-android-france.com/)
 
-<a href="https://play.google.com/store/apps/details?id=com.github.florent37.florent.champigny">
+
+<a href="https://goo.gl/WXW8Dc">
   <img alt="Android app on Google Play" src="https://developer.android.com/images/brand/en_app_rgb_wo_45.png" />
 </a>
+
 <a href="https://plus.google.com/+florentchampigny">
   <img alt="Follow me on Google+"
        src="https://raw.githubusercontent.com/florent37/DaVinci/master/mobile/src/main/res/drawable-hdpi/gplus.png" />
