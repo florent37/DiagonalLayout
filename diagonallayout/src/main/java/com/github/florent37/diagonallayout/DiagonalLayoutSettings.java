@@ -39,7 +39,7 @@ public class DiagonalLayoutSettings {
     DiagonalLayoutSettings(Context context, AttributeSet attrs) {
         TypedArray styledAttributes = context.obtainStyledAttributes(attrs, R.styleable.DiagonalLayout, 0, 0);
         try {
-            angle = styledAttributes.getInt(R.styleable.DiagonalLayout_diagonal_angle, 0);
+            angle = styledAttributes.getFloat(R.styleable.DiagonalLayout_diagonal_angle, 0);
             position = styledAttributes.getInt(R.styleable.DiagonalLayout_diagonal_position, BOTTOM);
             handleMargins = styledAttributes.getBoolean(R.styleable.DiagonalLayout_diagonal_handleMargins, false);
             direction = styledAttributes.getInt(R.styleable.DiagonalLayout_diagonal_direction, DIRECTION_LEFT);
