@@ -126,7 +126,7 @@ Exploration of some new styles and approaches on material design. This one here 
 
 In your module [![Download](https://api.bintray.com/packages/florent37/maven/DiagonalLayout/images/download.svg)](https://bintray.com/florent37/maven/DiagonalLayout/_latestVersion)
 ```groovy
-compile 'com.github.florent37:diagonallayout:1.0.7'
+compile 'com.github.florent37:diagonallayout:1.0.8'
 ```
 
 # Logs
