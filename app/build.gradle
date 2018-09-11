@@ -2,7 +2,6 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion project.sdk
-    buildToolsVersion project.buildTools
 
     defaultConfig {
         minSdkVersion project.minSdk
@@ -13,9 +12,9 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:appcompat-v7:' + project.supportVersion
-    compile 'de.hdodenhof:circleimageview:2.1.0'
-    compile 'com.flaviofaria:kenburnsview:1.0.7'
-    compile project(':diagonallayout')
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:' + project.supportVersion
+    implementation 'de.hdodenhof:circleimageview:2.1.0'
+    implementation 'com.flaviofaria:kenburnsview:1.0.7'
+    implementation project(':diagonallayout')
 }

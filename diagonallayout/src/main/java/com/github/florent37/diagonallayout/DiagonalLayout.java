@@ -1,302 +1,165 @@
 package com.github.florent37.diagonallayout;
 
-import android.annotation.TargetApi;
 import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Outline;
-import android.graphics.Paint;
+import android.content.res.TypedArray;
 import android.graphics.Path;
-import android.graphics.PorterDuff;
-import android.graphics.PorterDuffXfermode;
-import android.os.Build;
-import android.support.v4.view.ViewCompat;
+import android.support.annotation.IntDef;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewOutlineProvider;
-import android.widget.FrameLayout;
 
-import com.github.florent37.diagonallayout.DiagonalLayoutSettings.Direction;
-import com.github.florent37.diagonallayout.DiagonalLayoutSettings.Position;
+import com.github.florent37.diagonallayout.manager.ClipPathManager;
 
-public class DiagonalLayout extends FrameLayout {
+public class DiagonalLayout extends ShapeOfView {
 
-    private static final float EPSILON = 0.5f;
+    public static final int POSITION_BOTTOM = 1;
+    public static final int POSITION_TOP = 2;
+    public static final int POSITION_LEFT = 3;
+    public static final int POSITION_RIGHT = 4;
+    public static final int DIRECTION_LEFT = 1;
 
-    DiagonalLayoutSettings settings;
+    ;
+    public static final int DIRECTION_RIGHT = 2;
+    @DiagonalPosition
+    private int diagonalPosition = POSITION_TOP;
+    private int diagonalDirection = POSITION_TOP;
 
-    int height = 0;
-
-    int width = 0;
-
-    Path clipPath, outlinePath;
-
-    Paint paint;
-
-    Integer defaultMargin_forPosition;
-
-    private PorterDuffXfermode pdMode;
-
-    public DiagonalLayout(Context context) {
+    ;
+    private int diagonalAngle = 0;
+    public DiagonalLayout(@NonNull Context context) {
         super(context);
         init(context, null);
     }
-
-    public DiagonalLayout(Context context, AttributeSet attrs) {
+    public DiagonalLayout(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         init(context, attrs);
     }
 
-    public void init(Context context, AttributeSet attrs) {
-        settings = new DiagonalLayoutSettings(context, attrs);
-        settings.setElevation(ViewCompat.getElevation(this));
-
-        paint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        paint.setColor(Color.WHITE);
-
-        pdMode = new PorterDuffXfermode(PorterDuff.Mode.CLEAR);
+    public DiagonalLayout(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+        init(context, attrs);
     }
 
-    @Override
-    public void setBackgroundColor(int color) {
-        paint.setColor(color);
-        postInvalidate();
-    }
-
-    public void setPosition(@Position int position) {
-        settings.setPosition(position);
-        postInvalidate();
-    }
-
-    public void setDirection(@Direction int direction) {
-        settings.setDirection(direction);
-        postInvalidate();
-    }
-
-    public void setAngle(float angle){
-        settings.setAngle(angle);
-        calculateLayout();
-        postInvalidate();
-    }
-
-    private void calculateLayout() {
-        if (settings == null) {
-            return;
+    private void init(Context context, AttributeSet attrs) {
+        if (attrs != null) {
+            final TypedArray attributes = context.obtainStyledAttributes(attrs, R.styleable.DiagonalLayout);
+            diagonalAngle = attributes.getInteger(R.styleable.DiagonalLayout_diagonal_angle, diagonalAngle);
+            diagonalDirection = attributes.getInteger(R.styleable.DiagonalLayout_diagonal_direction, diagonalDirection);
+            diagonalPosition = attributes.getInteger(R.styleable.DiagonalLayout_diagonal_position, diagonalPosition);
+            attributes.recycle();
         }
-        height = getMeasuredHeight();
-        width = getMeasuredWidth();
-        if (width > 0 && height > 0) {
-
-            final float perpendicularHeight = (float) (width * Math.tan(Math.toRadians(settings.getAngle())));
-
-            clipPath = createClipPath(perpendicularHeight);
-            outlinePath = createOutlinePath(perpendicularHeight);
-
-            handleMargins(perpendicularHeight);
-
-            ViewCompat.setElevation(this, settings.getElevation());
-
-            //this needs to be fixed for 25.4.0
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && ViewCompat.getElevation(this) > 0f) {
-                try {
-                    setOutlineProvider(getOutlineProvider());
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
-
-    private Path createClipPath(float perpendicularHeight) {
-        Path path = new Path();
-        switch (settings.getPosition()) {
-            case DiagonalLayoutSettings.BOTTOM:
-                if (settings.isDirectionLeft()) {
-                    path.moveTo(width - getPaddingRight() + EPSILON, height - perpendicularHeight - getPaddingBottom() + EPSILON);
-                    path.lineTo(width - getPaddingRight() + EPSILON, height - getPaddingBottom() + EPSILON);
-                    path.lineTo(getPaddingLeft() - EPSILON, height - getPaddingBottom() + EPSILON);
-                    path.close();
-                } else {
-                    path.moveTo(width - getPaddingRight() + EPSILON, height - getPaddingBottom() + EPSILON);
-                    path.lineTo(getPaddingLeft() - EPSILON, height - getPaddingBottom() + EPSILON);
-                    path.lineTo(getPaddingLeft() - EPSILON, height - perpendicularHeight - getPaddingBottom() + EPSILON);
-                    path.close();
-                }
-                break;
-            case DiagonalLayoutSettings.TOP:
-                if (settings.isDirectionLeft()) {
-                    path.moveTo(width - getPaddingRight() + EPSILON, getPaddingTop() + perpendicularHeight - EPSILON);
-                    path.lineTo(getPaddingLeft() - EPSILON, getPaddingTop() - EPSILON);
-                    path.lineTo(width - getPaddingRight() + EPSILON, getPaddingTop() - EPSILON);
-                    path.close();
-                } else {
-                    path.moveTo(width - getPaddingRight() + EPSILON, getPaddingTop() - EPSILON);
-                    path.lineTo(getPaddingLeft() - EPSILON, getPaddingTop() + perpendicularHeight - EPSILON);
-                    path.lineTo(getPaddingLeft() - EPSILON, getPaddingTop() - EPSILON);
-                    path.close();
-                }
-                break;
-            case DiagonalLayoutSettings.RIGHT:
-                if (settings.isDirectionLeft()) {
-                    path.moveTo(width - getPaddingRight() + EPSILON, getPaddingTop() - EPSILON);
-                    path.lineTo(width - getPaddingRight() + EPSILON, height - getPaddingBottom() + EPSILON);
-                    path.lineTo(width - perpendicularHeight - getPaddingRight() + EPSILON, height - getPaddingBottom() + EPSILON);
-                    path.close();
-                } else {
-                    path.moveTo(width - perpendicularHeight - getPaddingRight() - EPSILON, getPaddingTop() - EPSILON);
-                    path.lineTo(width - getPaddingRight() + EPSILON, getPaddingTop() - EPSILON);
-                    path.lineTo(width - getPaddingRight() + EPSILON, height - getPaddingBottom() + EPSILON);
-                    path.close();
-                }
-                break;
-            case DiagonalLayoutSettings.LEFT:
-                if (settings.isDirectionLeft()) {
-                    path.moveTo(getPaddingLeft() - EPSILON, getPaddingTop() - EPSILON);
-                    path.lineTo(getPaddingLeft() + perpendicularHeight + EPSILON, getPaddingTop() - EPSILON);
-                    path.lineTo(getPaddingLeft() - EPSILON, height - getPaddingBottom() + EPSILON);
-                    path.close();
-                } else {
-                    path.moveTo(getPaddingLeft() - EPSILON, getPaddingTop() - EPSILON);
-                    path.lineTo(getPaddingLeft() + perpendicularHeight + EPSILON, height - getPaddingBottom() + EPSILON);
-                    path.lineTo(getPaddingLeft() - EPSILON, height - getPaddingBottom() + EPSILON);
-                    path.close();
-                }
-                break;
-        }
-        return path;
-    }
-
-    private Path createOutlinePath(float perpendicularHeight) {
-        Path path = new Path();
-        switch (settings.getPosition()) {
-            case DiagonalLayoutSettings.BOTTOM:
-                if (settings.isDirectionLeft()) {
-                    path.moveTo(getPaddingLeft(), getPaddingRight());
-                    path.lineTo(width - getPaddingRight(), getPaddingTop());
-                    path.lineTo(width - getPaddingRight(), height - perpendicularHeight - getPaddingBottom());
-                    path.lineTo(getPaddingLeft(), height - getPaddingBottom());
-                    path.close();
-                } else {
-                    path.moveTo(width - getPaddingRight(), height - getPaddingBottom());
-                    path.lineTo(getPaddingLeft(), height - perpendicularHeight - getPaddingBottom());
-                    path.lineTo(getPaddingLeft(), getPaddingTop());
-                    path.lineTo(width - getPaddingRight(), getPaddingTop());
-                    path.close();
-                }
-                break;
-            case DiagonalLayoutSettings.TOP:
-                if (settings.isDirectionLeft()) {
-                    path.moveTo(width - getPaddingRight(), height - getPaddingBottom());
-                    path.lineTo(width - getPaddingRight(), getPaddingTop() + perpendicularHeight);
-                    path.lineTo(getPaddingLeft(), getPaddingTop());
-                    path.lineTo(getPaddingLeft(), height - getPaddingBottom());
-                    path.close();
-                } else {
-                    path.moveTo(width - getPaddingRight(), height - getPaddingBottom());
-                    path.lineTo(width - getPaddingRight(), getPaddingTop());
-                    path.lineTo(getPaddingLeft(), getPaddingTop() + perpendicularHeight);
-                    path.lineTo(getPaddingLeft(), height - getPaddingBottom());
-                    path.close();
-                }
-                break;
-            case DiagonalLayoutSettings.RIGHT:
-                if (settings.isDirectionLeft()) {
-                    path.moveTo(getPaddingLeft(), getPaddingTop());
-                    path.lineTo(width - getPaddingRight(), getPaddingTop());
-                    path.lineTo(width - getPaddingRight() - perpendicularHeight, height - getPaddingBottom());
-                    path.lineTo(getPaddingLeft(), height - getPaddingBottom());
-                    path.close();
-                } else {
-                    path.moveTo(getPaddingLeft(), getPaddingTop());
-                    path.lineTo(width - getPaddingRight() - perpendicularHeight, getPaddingTop());
-                    path.lineTo(width - getPaddingRight(), height - getPaddingBottom());
-                    path.lineTo(getPaddingLeft(), height - getPaddingBottom());
-                    path.close();
-                }
-                break;
-            case DiagonalLayoutSettings.LEFT:
-                if (settings.isDirectionLeft()) {
-                    path.moveTo(getPaddingLeft() + perpendicularHeight, getPaddingTop());
-                    path.lineTo(width - getPaddingRight(), getPaddingTop());
-                    path.lineTo(width - getPaddingRight(), height - getPaddingBottom());
-                    path.lineTo(getPaddingLeft(), height - getPaddingBottom());
-                    path.close();
-                } else {
-                    path.moveTo(getPaddingLeft(), getPaddingTop());
-                    path.lineTo(width - getPaddingRight(), getPaddingTop());
-                    path.lineTo(width - getPaddingRight(), height - getPaddingBottom());
-                    path.lineTo(getPaddingLeft() + perpendicularHeight, height - getPaddingBottom());
-                    path.close();
-                }
-                break;
-        }
-        return path;
-    }
-
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    @Override
-    public ViewOutlineProvider getOutlineProvider() {
-        return new ViewOutlineProvider() {
+        super.setClipPathCreator(new ClipPathManager.ClipPathCreator() {
             @Override
-            public void getOutline(View view, Outline outline) {
-                outline.setConvexPath(outlinePath);
-            }
-        };
-    }
+            public Path createClipPath(int width, int height) {
+                final Path path = new Path();
 
-    private void handleMargins(float perpendicularHeight) {
-        if (settings.isHandleMargins()) {
-            ViewGroup.LayoutParams layoutParams = getLayoutParams();
-            if (layoutParams instanceof MarginLayoutParams) {
-                MarginLayoutParams lp = (MarginLayoutParams) layoutParams;
+                final float perpendicularHeight = (float) (width * Math.tan(Math.toRadians(diagonalAngle)));
+                final boolean isDirectionLeft = diagonalDirection == DIRECTION_LEFT;
 
-                switch (settings.getDirection()) {
-                    case DiagonalLayoutSettings.BOTTOM:
-                        if (defaultMargin_forPosition == null) {
-                            defaultMargin_forPosition = lp.bottomMargin;
+                switch (diagonalPosition) {
+                    case POSITION_BOTTOM:
+                        if (isDirectionLeft) {
+                            path.moveTo(getPaddingLeft(), getPaddingRight());
+                            path.lineTo(width - getPaddingRight(), getPaddingTop());
+                            path.lineTo(width - getPaddingRight(), height - perpendicularHeight - getPaddingBottom());
+                            path.lineTo(getPaddingLeft(), height - getPaddingBottom());
+                            path.close();
                         } else {
-                            defaultMargin_forPosition = 0;
+                            path.moveTo(width - getPaddingRight(), height - getPaddingBottom());
+                            path.lineTo(getPaddingLeft(), height - perpendicularHeight - getPaddingBottom());
+                            path.lineTo(getPaddingLeft(), getPaddingTop());
+                            path.lineTo(width - getPaddingRight(), getPaddingTop());
+                            path.close();
                         }
-                        lp.bottomMargin = (int) (defaultMargin_forPosition - perpendicularHeight);
                         break;
-                    case DiagonalLayoutSettings.TOP:
-                        if (defaultMargin_forPosition == null) {
-                            defaultMargin_forPosition = lp.topMargin;
+                    case POSITION_TOP:
+                        if (isDirectionLeft) {
+                            path.moveTo(width - getPaddingRight(), height - getPaddingBottom());
+                            path.lineTo(width - getPaddingRight(), getPaddingTop() + perpendicularHeight);
+                            path.lineTo(getPaddingLeft(), getPaddingTop());
+                            path.lineTo(getPaddingLeft(), height - getPaddingBottom());
+                            path.close();
                         } else {
-                            defaultMargin_forPosition = 0;
+                            path.moveTo(width - getPaddingRight(), height - getPaddingBottom());
+                            path.lineTo(width - getPaddingRight(), getPaddingTop());
+                            path.lineTo(getPaddingLeft(), getPaddingTop() + perpendicularHeight);
+                            path.lineTo(getPaddingLeft(), height - getPaddingBottom());
+                            path.close();
                         }
-                        lp.topMargin = (int) (defaultMargin_forPosition - perpendicularHeight);
+                        break;
+                    case POSITION_RIGHT:
+                        if (isDirectionLeft) {
+                            path.moveTo(getPaddingLeft(), getPaddingTop());
+                            path.lineTo(width - getPaddingRight(), getPaddingTop());
+                            path.lineTo(width - getPaddingRight() - perpendicularHeight, height - getPaddingBottom());
+                            path.lineTo(getPaddingLeft(), height - getPaddingBottom());
+                            path.close();
+                        } else {
+                            path.moveTo(getPaddingLeft(), getPaddingTop());
+                            path.lineTo(width - getPaddingRight() - perpendicularHeight, getPaddingTop());
+                            path.lineTo(width - getPaddingRight(), height - getPaddingBottom());
+                            path.lineTo(getPaddingLeft(), height - getPaddingBottom());
+                            path.close();
+                        }
+                        break;
+                    case POSITION_LEFT:
+                        if (isDirectionLeft) {
+                            path.moveTo(getPaddingLeft() + perpendicularHeight, getPaddingTop());
+                            path.lineTo(width - getPaddingRight(), getPaddingTop());
+                            path.lineTo(width - getPaddingRight(), height - getPaddingBottom());
+                            path.lineTo(getPaddingLeft(), height - getPaddingBottom());
+                            path.close();
+                        } else {
+                            path.moveTo(getPaddingLeft(), getPaddingTop());
+                            path.lineTo(width - getPaddingRight(), getPaddingTop());
+                            path.lineTo(width - getPaddingRight(), height - getPaddingBottom());
+                            path.lineTo(getPaddingLeft() + perpendicularHeight, height - getPaddingBottom());
+                            path.close();
+                        }
                         break;
                 }
-
-                setLayoutParams(lp);
+                return path;
             }
-        }
+
+            @Override
+            public boolean requiresBitmap() {
+                return false;
+            }
+        });
     }
 
-    @Override
-    protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
-        super.onLayout(changed, left, top, right, bottom);
-        if (changed) {
-            calculateLayout();
-        }
+    public int getDiagonalPosition() {
+        return diagonalPosition;
     }
 
-    @Override
-    protected void dispatchDraw(Canvas canvas) {
-        if(!isInEditMode()) {
-            int saveCount = canvas.saveLayer(0, 0, getWidth(), getHeight(), null, Canvas.ALL_SAVE_FLAG);
+    public void setDiagonalPosition(@DiagonalPosition int diagonalPosition) {
+        this.diagonalPosition = diagonalPosition;
+        requiresShapeUpdate();
+    }
 
-            super.dispatchDraw(canvas);
+    public int getDiagonalDirection() {
+        return diagonalDirection;
+    }
 
-            paint.setXfermode(pdMode);
-            canvas.drawPath(clipPath, paint);
+    public void setDiagonalDirection(int diagonalDirection) {
+        this.diagonalDirection = diagonalDirection;
+        requiresShapeUpdate();
+    }
 
-            canvas.restoreToCount(saveCount);
-            paint.setXfermode(null);
-        } else {
-            super.dispatchDraw(canvas);
-        }
+    public int getDiagonalAngle() {
+        return diagonalAngle;
+    }
+
+    public void setDiagonalAngle(int diagonalAngle) {
+        this.diagonalAngle = diagonalAngle;
+        requiresShapeUpdate();
+    }
+
+    @IntDef(value = {POSITION_BOTTOM, POSITION_TOP, POSITION_LEFT, POSITION_RIGHT})
+    public @interface DiagonalPosition {
+    }
+
+    @IntDef(value = {DIRECTION_LEFT, DIRECTION_RIGHT})
+    public @interface DiagonalDirection {
     }
 }

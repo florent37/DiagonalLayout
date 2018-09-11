@@ -15,7 +15,6 @@
         diagonal:diagonal_angle="10"
         diagonal:diagonal_position="bottom"
         diagonal:diagonal_direction="left"
-        diagonal:diagonal_handleMargins="true"
         >
 
         <com.flaviofaria.kenburnsview.KenBurnsView
@@ -76,7 +75,7 @@
         android:layout_height="50dp"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="-30dp"
         android:weightSum="4"
         >
 
