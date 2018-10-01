@@ -160,6 +160,7 @@ Thanks to [ZieIony](https://github.com/ZieIony)
 Author: Florent Champigny [http://www.florentchampigny.com/](http://www.florentchampigny.com/)
 Blog : [http://www.tutos-android-france.com/](http://www.tutos-android-france.com/)
 
+Fiches Plateau Moto : [https://www.fiches-plateau-moto.fr/](https://www.fiches-plateau-moto.fr/)
 
 <a href="https://goo.gl/WXW8Dc">
   <img alt="Android app on Google Play" src="https://developer.android.com/images/brand/en_app_rgb_wo_45.png" />
