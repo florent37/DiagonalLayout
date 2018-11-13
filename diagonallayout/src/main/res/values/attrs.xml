@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="DiagonalLayout">
-        <attr name="diagonal_angle" format="integer" />
+        <attr name="diagonal_angle" format="float" />
         <attr name="diagonal_position" format="enum">
             <enum name="bottom" value="1"/>
             <enum name="top" value="2"/>
