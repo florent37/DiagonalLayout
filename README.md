@@ -157,7 +157,7 @@ Thanks to [ZieIony](https://github.com/ZieIony)
 
 # Credits
 
-Author: Florent Champigny [http://www.florentchampigny.com/](http://www.florentchampigny.com/)
+Author: Florent Champigny 
 Blog : [http://www.tutos-android-france.com/](http://www.tutos-android-france.com/)
 
 Fiches Plateau Moto : [https://www.fiches-plateau-moto.fr/](https://www.fiches-plateau-moto.fr/)
